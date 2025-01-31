@@ -5,9 +5,17 @@ services:
     build: .
     container_name: fastapi-bot
     ports:
-      - "8080:8080"
+      - "5000:5000"  # Проброс порта 5000
     restart: unless-stopped
     environment:
       - TZ=UTC
     volumes:
       - ./logs:/app/logs
+    # runtime: nvidia
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]

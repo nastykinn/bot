@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+transformers
+requests
+pydantic
+wikipedia-api
+feedparser
+beautifulsoup4
+torch
