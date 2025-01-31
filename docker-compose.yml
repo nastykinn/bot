@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.8"  # Укажите версию Compose на верхнем уровне
 
 services:
   fastapi-service:
@@ -6,16 +6,8 @@ services:
     container_name: fastapi-bot
     ports:
       - "5000:5000"  # Проброс порта 5000
-    restart: unless-stopped
-    environment:
-      - TZ=UTC
+    restart: unless-stopped  # Контейнер будет перезапускаться, если он остановится
     volumes:
-      - ./logs:/app/logs
-    # runtime: nvidia
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #         - driver: nvidia
-    #           count: all
-    #           capabilities: [gpu]
+      - .:/app  # Привязка текущей директории к /app внутри контейнера
+    environment:
+      - ENV=production  # Устанавливаем переменную окружения для продакшн окружения
